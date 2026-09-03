@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vedant Kumar — Portfolio</title>
+<meta name="description" content="Vedant Kumar — logic-driven programmer and developer. CSE undergrad at LPU building web platforms, automation, and AI-integrated systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fbfbf9;
+    --bg-alt: #f2f2ee;
+    --panel: #ffffff;
+    --ink: #14171a;
+    --ink-soft: #52565c;
+    --ink-faint: #8a8d92;
+    --accent: #2547e0;
+    --accent-deep: #16309c;
+    --accent-soft: #eef1ff;
+    --line: #e2e2dc;
+    --radius: 3px;
+    --maxw: 880px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--accent); color:#fff;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(251,251,249,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-mark{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.02em;
+  }
+  .nav-mark span{color:var(--accent);}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .nav-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    text-decoration:none;
+    color:var(--ink-soft);
+    letter-spacing:0.03em;
+    transition:color .2s ease;
+    position:relative;
+  }
+  .nav-links a::before{content:"";}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:640px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- section shell ---------- */
+  section{
+    padding:96px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--accent);
+    letter-spacing:0.02em;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:"";
+    display:inline-block;
+    width:14px; height:1px;
+    background:var(--accent);
+  }
+  .section-title{
+    font-size:clamp(28px,4vw,38px);
+    margin-bottom:20px;
+  }
+  .section-lede{
+    color:var(--ink-soft);
+    font-size:17px;
+    max-width:60ch;
+    margin-bottom:56px;
+  }
+
+  /* ---------- hero ---------- */
+  #hero{
+    padding-top:168px;
+    padding-bottom:88px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:start;
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .hero-name{
+    font-size:clamp(42px,6.4vw,68px);
+    line-height:1.02;
+    margin-bottom:18px;
+  }
+  .hero-role{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-bottom:32px;
+  }
+  .hero-role strong{color:var(--ink); font-weight:600;}
+
+  .cta-row{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.02em;
+    padding:13px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:all .18s ease;
+    border:1px solid var(--ink);
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--bg);
+  }
+  .btn-primary:hover{
+    background:var(--accent);
+    border-color:var(--accent);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{
+    border-color:var(--ink);
+  }
+
+  /* terminal signature */
+  .terminal{
+    background:var(--ink);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 24px 48px -20px rgba(20,23,26,0.35);
+  }
+  .terminal-bar{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:11px 14px;
+    background:#1e2125;
+    border-bottom:1px solid #2a2d31;
+  }
+  .terminal-dot{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:#4a4e54;
+  }
+  .terminal-title{
+    margin-left:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#8a8d92;
+    letter-spacing:0.02em;
+  }
+  .terminal-body{
+    padding:20px 18px 24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    line-height:1.85;
+    color:#c7cad0;
+    min-height:230px;
+  }
+  .terminal-body .prompt{color:#5b8dfc;}
+  .terminal-body .cmd{color:#f2f3f5;}
+  .terminal-body .out-key{color:#7fa8ff;}
+  .terminal-body .out-dim{color:#7c7f85;}
+  .cursor{
+    display:inline-block;
+    width:7px; height:14px;
+    background:#f2f3f5;
+    margin-left:2px;
+    animation:blink 1s step-end infinite;
+    vertical-align:-2px;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  .typeline{opacity:0;}
+  .typeline.show{opacity:1;}
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:48px;
+  }
+  .about-photo{
+    width:168px;
+  }
+  .about-photo img{
+    width:168px; height:168px;
+    object-fit:cover;
+    border-radius:6px;
+    filter:grayscale(100%);
+    border:1px solid var(--line);
+  }
+  .about-photo-cap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+    margin-top:10px;
+    text-align:center;
+  }
+  .about-body p{
+    color:var(--ink-soft);
+    margin:0 0 18px;
+    font-size:16px;
+    max-width:64ch;
+  }
+  .about-body strong{color:var(--ink);}
+
+  .influences{
+    margin-top:28px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .influences-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-bottom:12px;
+    letter-spacing:0.03em;
+  }
+  .book-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+  }
+  .book-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    padding:6px 12px;
+    background:var(--accent-soft);
+    color:var(--accent-deep);
+    border-radius:2px;
+  }
+
+  @media (max-width:640px){
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo{width:120px;}
+    .about-photo img{width:120px;height:120px;}
+  }
+
+  /* ---------- skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .skill-cell{
+    background:var(--bg);
+    padding:28px 30px;
+  }
+  .skill-cell-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-bottom:14px;
+    letter-spacing:0.03em;
+  }
+  .skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .skill-tag{
+    font-size:14.5px;
+    padding:7px 13px;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:2px;
+    transition:border-color .18s ease, color .18s ease;
+  }
+  .skill-tag:hover{
+    border-color:var(--accent);
+    color:var(--accent-deep);
+  }
+  @media (max-width:640px){
+    .skills-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- projects ---------- */
+  .project{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    margin-bottom:28px;
+    background:var(--panel);
+    transition:box-shadow .22s ease, transform .22s ease;
+  }
+  .project:hover{
+    box-shadow:0 20px 40px -24px rgba(20,23,26,0.25);
+    transform:translateY(-2px);
+  }
+  .project-head{
+    padding:30px 32px 0;
+  }
+  .project-index{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-bottom:10px;
+  }
+  .project-name{
+    font-size:24px;
+    margin-bottom:12px;
+  }
+  .project-desc{
+    color:var(--ink-soft);
+    max-width:66ch;
+    margin-bottom:18px;
+  }
+  .project-stack{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-bottom:22px;
+  }
+  .stack-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    padding:5px 10px;
+    background:var(--accent-soft);
+    color:var(--accent-deep);
+    border-radius:2px;
+  }
+  .project-links{
+    padding:0 32px 28px;
+    display:flex;
+    gap:20px;
+  }
+  .project-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+    transition:color .18s ease, border-color .18s ease;
+  }
+  .project-links a:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+
+  /* ---------- certificates ---------- */
+  .cert-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  .cert-card{
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    background:var(--panel);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .cert-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+  }
+  .cert-thumb{
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--bg-alt);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .cert-thumb img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .cert-thumb.placeholder{
+    flex-direction:column;
+    gap:8px;
+  }
+  .cert-thumb.placeholder .ph-icon{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:26px;
+    color:var(--ink-faint);
+  }
+  .cert-thumb.placeholder .ph-text{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+  }
+  .cert-meta{
+    padding:16px 18px 18px;
+  }
+  .cert-name{
+    font-size:14.5px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .cert-issuer{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+  }
+  @media (max-width:760px){
+    .cert-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- achievements ---------- */
+  .ach-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .ach-row{
+    display:grid;
+    grid-template-columns:64px 1fr auto;
+    gap:22px;
+    align-items:center;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .ach-row:last-child{border-bottom:none;}
+  .ach-rank{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:26px;
+    font-weight:600;
+    color:var(--accent);
+  }
+  .ach-title{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .ach-sub{
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .ach-proof{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-decoration:none;
+    color:var(--ink-faint);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    border-radius:2px;
+    white-space:nowrap;
+    transition:all .18s ease;
+  }
+  .ach-proof:hover{
+    color:var(--accent-deep);
+    border-color:var(--accent);
+  }
+  @media (max-width:640px){
+    .ach-row{grid-template-columns:40px 1fr; row-gap:10px;}
+    .ach-proof{grid-column:1/-1;}
+    .ach-rank{font-size:20px;}
+  }
+
+  /* ---------- education ---------- */
+  .edu-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .edu-row{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .edu-row:last-child{border-bottom:none;}
+  .edu-period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-faint);
+    padding-top:3px;
+  }
+  .edu-school{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .edu-detail{
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .edu-score{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--accent-deep);
+    font-size:13.5px;
+    margin-top:4px;
+    display:inline-block;
+  }
+  @media (max-width:640px){
+    .edu-row{grid-template-columns:1fr; gap:6px;}
+  }
+
+  /* ---------- contact ---------- */
+  #contact{
+    text-align:left;
+  }
+  .contact-title{
+    font-size:clamp(30px,5vw,44px);
+    margin-bottom:18px;
+    max-width:16ch;
+  }
+  .contact-lede{
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin-bottom:40px;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,auto);
+    gap:16px 48px;
+  }
+  .contact-item-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    margin-bottom:6px;
+  }
+  .contact-item-val a{
+    text-decoration:none;
+    font-size:16px;
+    border-bottom:1px solid transparent;
+    transition:border-color .18s ease, color .18s ease;
+  }
+  .contact-item-val a:hover{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+  @media (max-width:560px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+
+  footer{
+    padding:32px 0 40px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .footer-inner a{text-decoration:none; color:var(--ink-faint);}
+  .footer-inner a:hover{color:var(--accent);}
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+    .reveal{opacity:1; transform:none;}
+  }
+
+  @media (max-width:640px){
+    section{padding:64px 0;}
+    #hero{padding-top:132px;}
+    .hero-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-mark">VK<span>.</span>dev</div>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#work">work</a></li>
+      <li><a href="#certs">certs</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">CSE Undergrad · Lovely Professional University</div>
+        <h1 class="hero-name">Vedant<br>Kumar</h1>
+        <p class="hero-role">A <strong>logic-driven programmer</strong> who breaks intricate problems into robust, efficient code — working across backend systems, web platforms, and AI-integrated automation.</p>
+        <div class="cta-row">
+          <a href="#work" class="btn btn-primary">View work →</a>
+          <a href="assets/Vedant_Kumar_CV.pdf" class="btn btn-ghost" download>Download résumé</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-title">vedant@lpu: ~</div>
+        </div>
+        <div class="terminal-body" id="termBody">
+          <div><span class="prompt">$</span> <span class="cmd" id="typedCmd"></span><span class="cursor" id="typedCursor"></span></div>
+          <div id="termOut" style="opacity:0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">$ about</div>
+    <div class="about-grid reveal">
+      <div class="about-photo">
+        <img src="assets/profile.jpg" alt="Portrait of Vedant Kumar">
+        <div class="about-photo-cap">Phagwara, Punjab</div>
+      </div>
+      <div class="about-body">
+        <p>"If you want to change your results, you have to change your habits." — a line from <em>Atomic Habits</em> that shapes how I approach both code and life.</p>
+        <p>I thrive at the intersection of core programming, web development, and intelligent automation. My technical journey began with a strong grounding in <strong>C, C++, and Python</strong>, and I'm currently expanding into <strong>Python backend development</strong> while pushing further into automation and AI-integrated systems that scale and eliminate inefficiency.</p>
+        <p>Beyond the backend, I build responsive interfaces with <strong>HTML, CSS, and JavaScript</strong>, backed by foundational work in Node.js and PostgreSQL. I enjoy taking an intricate problem statement and reducing it to something clean and provable.</p>
+        <div class="influences">
+          <div class="influences-label">// beyond the code — books that shape how I build</div>
+          <div class="book-list">
+            <span class="book-tag">Zero to One</span>
+            <span class="book-tag">Hooked</span>
+            <span class="book-tag">Atomic Habits</span>
+            <span class="book-tag">Ignited Minds</span>
+            <span class="book-tag">Can't Hurt Me</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">$ skills</div>
+    <h2 class="section-title reveal">Stack &amp; capabilities</h2>
+    <p class="section-lede reveal">The tools I reach for most, grouped by where they sit in a build.</p>
+
+    <div class="skills-grid reveal">
+      <div class="skill-cell">
+        <div class="skill-cell-label">// languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-label">// frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">HTML &amp; CSS</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-label">// tools &amp; platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-cell-label">// working style</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Problem-solving</span>
+          <span class="skill-tag">Team lead</span>
+          <span class="skill-tag">Project management</span>
+          <span class="skill-tag">Adaptability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">$ projects</div>
+    <h2 class="section-title reveal">Selected work</h2>
+    <p class="section-lede reveal">Two platforms built around the same idea: take a slow, manual process and make it real-time.</p>
+
+    <div class="project reveal">
+      <div class="project-head">
+        <div class="project-index">Feb '26</div>
+        <div class="project-name">Patient Monitoring System</div>
+        <p class="project-desc">A direct-to-doctor healthcare platform for continuous remote monitoring of chronic-disease patients — cutting out intermediary bottlenecks and reducing out-of-pocket consultation costs. Integrates wearable devices, a mobile app, and cloud-based analytics to track vitals and push real-time alerts to healthcare providers.</p>
+        <div class="project-stack">
+          <span class="stack-chip">Django</span>
+          <span class="stack-chip">MySQL</span>
+          <span class="stack-chip">MIT App Inventor</span>
+          <span class="stack-chip">API Development</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/27vedantkumar/patient-monitoring-system" target="_blank" rel="noopener">GitHub repo ↗</a>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-head">
+        <div class="project-index">Dec '25</div>
+        <div class="project-name">ZeroCity</div>
+        <p class="project-desc">A citizen-centric urban intelligence platform supporting zero-waste and smart-city initiatives. Lets local communities crowdsource and register neighborhood waste data in real time, deployed on scalable cloud infrastructure so city administrations can route cleanup efforts using data instead of guesswork — surfaced through dynamic heat-maps and distribution-trend dashboards.</p>
+        <div class="project-stack">
+          <span class="stack-chip">Cloud Infrastructure</span>
+          <span class="stack-chip">Real-time Sync</span>
+          <span class="stack-chip">Data Visualization</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/27vedantkumar/ZEROCITY" target="_blank" rel="noopener">GitHub repo ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section id="certs">
+  <div class="wrap">
+    <div class="eyebrow">$ certificates</div>
+    <h2 class="section-title reveal">Certificates</h2>
+    <p class="section-lede reveal">Coursework completed alongside the degree.</p>
+
+    <div class="cert-grid reveal">
+      <div class="cert-card">
+        <div class="cert-thumb">
+          <img src="assets/cert_genai.jpg" alt="Generative AI for Developers certificate">
+        </div>
+        <div class="cert-meta">
+          <div class="cert-name">Generative AI for Developers</div>
+          <div class="cert-issuer">PW Skills · Dec '25</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-thumb">
+          <img src="assets/nptel.jpg" alt="Natural Language Processing certificate">
+        </div>
+        <div class="cert-meta">
+          <div class="cert-name">Natural Language Processing</div>
+          <div class="cert-issuer">NPTEL · Oct '26</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-card">
+  <div class="cert-thumb">
+    <img src="assets/java.png" alt="Java certification course certificate">
+  </div>
+  <div class="cert-meta">
+    <div class="cert-name">The Complete Java Certification Course</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="eyebrow">$ achievements</div>
+    <h2 class="section-title reveal">Achievements</h2>
+    <p class="section-lede reveal">Competitive results from hackathons and coding events.</p>
+
+    <div class="ach-list reveal">
+      <div class="ach-row">
+        <div class="ach-rank">2nd</div>
+        <div>
+          <div class="ach-title"> Advitiya'26, IIT Ropar</div>
+          <div class="ach-sub">Secured 2nd position among multi-college participants at the IIT Ropar tech fest.</div>
+        </div>
+        <a class="ach-proof" href="assets/cert_coasterx.jpg" target="_blank" rel="noopener">View proof ↗</a>
+      </div>
+      <div class="ach-row">
+        <div class="ach-rank">3rd</div>
+        <div>
+          <div class="ach-title">Decode the Code — CSE Section of the Year 2k25, LPU</div>
+          <div class="ach-sub">Placed 3rd among 500+ teams at Lovely Professional University's flagship CSE event.</div>
+        </div>
+        <a class="ach-proof" href="assets/cert_soty.jpg" target="_blank" rel="noopener">View proof ↗</a>
+      </div>
+      <div class="ach-row">
+        <div class="ach-rank">Top 50</div>
+        <div>
+          <div class="ach-title">Hackathon Finalist — IIT Guwahati</div>
+          <div class="ach-sub">Participated and advanced into the top 50 teams.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">$ education</div>
+    <h2 class="section-title reveal">Education</h2>
+
+    <div class="edu-list reveal">
+      <div class="edu-row">
+        <div class="edu-period">Since Aug '25</div>
+        <div>
+          <div class="edu-school">Lovely Professional University</div>
+          <div class="edu-detail">Bachelor of Technology — Computer Science &amp; Engineering · Phagwara, Punjab</div>
+          <span class="edu-score">CGPA 7.84</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-period">Apr '23 – Mar '25</div>
+        <div>
+          <div class="edu-school">Saint Joseph's School</div>
+          <div class="edu-detail">Intermediate · Bhagalpur, Bihar</div>
+          <span class="edu-score">92%</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-period">Apr '22 – Mar '23</div>
+        <div>
+          <div class="edu-school">Saint Joseph's School</div>
+          <div class="edu-detail">Matriculation · Bhagalpur, Bihar</div>
+          <span class="edu-score">84%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">$ contact</div>
+    <h2 class="contact-title reveal">Let's build something worth shipping.</h2>
+    <p class="contact-lede reveal">Open to discussing software engineering, automation, or a good book recommendation.</p>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="contact-item-label">EMAIL</div>
+        <div class="contact-item-val"><a href="mailto:27vedantkumar@gmail.com">27vedantkumar@gmail.com</a></div>
+      </div>
+      <div>
+        <div class="contact-item-label">PHONE</div>
+        <div class="contact-item-val"><a href="tel:+918158909125">+91 81589 09125</a></div>
+      </div>
+      <div>
+        <div class="contact-item-label">GITHUB</div>
+        <div class="contact-item-val"><a href="https://github.com/27vedantkumar" target="_blank" rel="noopener">github.com/27vedantkumar</a></div>
+      </div>
+      <div>
+        <div class="contact-item-label">LINKEDIN</div>
+        <div class="contact-item-val"><a href="https://www.linkedin.com/in/27vedantkumar/" target="_blank" rel="noopener">/in/27vedantkumar</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Vedant Kumar</span>
+    <span>Built with intent, not a template.</span>
+  </div>
+</footer>
+
+<script>
+  // Terminal typing sequence
+  (function(){
+    const cmdEl = document.getElementById('typedCmd');
+    const outEl = document.getElementById('termOut');
+    const cursorEl = document.getElementById('typedCursor');
+    const cmd = "whoami";
+    const outLines = [
+      { k: "role", v: "logic-driven programmer & builder" },
+      { k: "stack", v: "python · c++ · js · django · postgres" },
+      { k: "focus", v: "automation, AI integration, clean systems" },
+      { k: "status", v: "shipping something new" }
+    ];
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if(reduceMotion){
+      cmdEl.textContent = cmd;
+      outEl.style.opacity = 1;
+      outEl.innerHTML = outLines.map(l => `<div><span class="out-key">${l.k}</span><span class="out-dim">:</span> ${l.v}</div>`).join('');
+      return;
+    }
+
+    let i = 0;
+    function typeChar(){
+      if(i < cmd.length){
+        cmdEl.textContent += cmd[i];
+        i++;
+        setTimeout(typeChar, 90);
+      } else {
+        setTimeout(showOutput, 400);
+      }
+    }
+    function showOutput(){
+      outEl.style.transition = 'opacity .5s ease';
+      outEl.style.opacity = 1;
+      let html = '';
+      outLines.forEach((l, idx) => {
+        setTimeout(() => {
+          const row = document.createElement('div');
+          row.innerHTML = `<span class="out-key">${l.k}</span><span class="out-dim">:</span> ${l.v}`;
+          outEl.appendChild(row);
+        }, idx * 220);
+      });
+      setTimeout(() => { cursorEl.style.display = 'none'; }, outLines.length * 220 + 200);
+    }
+    setTimeout(typeChar, 500);
+  })();
+
+  // Scroll reveal
+  (function(){
+    const items = document.querySelectorAll('.reveal');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion){
+      items.forEach(el => el.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>
