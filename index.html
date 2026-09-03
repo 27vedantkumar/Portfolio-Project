@@ -338,7 +338,8 @@
   .skill-tags{
     display:flex;
     flex-wrap:wrap;
-    gap:8px;
+    gap:10px;
+    align-items:center;
   }
   .skill-tag{
     font-size:14.5px;
@@ -351,6 +352,64 @@
   .skill-tag:hover{
     border-color:var(--accent);
     color:var(--accent-deep);
+  }
+  .skill-icon{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:52px;
+    height:52px;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:6px;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    cursor:default;
+  }
+  .skill-icon:hover{
+    border-color:var(--accent);
+    transform:translateY(-3px);
+    box-shadow:0 6px 16px -6px rgba(37,71,224,0.18);
+  }
+  .skill-icon img{
+    width:28px;
+    height:28px;
+    object-fit:contain;
+    filter:none;
+    transition:filter .2s ease;
+  }
+  .skill-icon:hover img{
+    filter:drop-shadow(0 0 3px rgba(37,71,224,0.3));
+  }
+  .skill-icon .skill-tooltip{
+    position:absolute;
+    bottom:calc(100% + 8px);
+    left:50%;
+    transform:translateX(-50%) translateY(4px);
+    background:var(--ink);
+    color:#fff;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.02em;
+    padding:5px 10px;
+    border-radius:4px;
+    white-space:nowrap;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+  }
+  .skill-icon .skill-tooltip::after{
+    content:'';
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+    border:4px solid transparent;
+    border-top-color:var(--ink);
+  }
+  .skill-icon:hover .skill-tooltip{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
   }
   @media (max-width:640px){
     .skills-grid{grid-template-columns:1fr;}
@@ -739,27 +798,64 @@
       <div class="skill-cell">
         <div class="skill-cell-label">// languages</div>
         <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">C++</span>
-          <span class="skill-tag">C</span>
-          <span class="skill-tag">JavaScript</span>
+          <div class="skill-icon" aria-label="Python">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
+            <span class="skill-tooltip">Python</span>
+          </div>
+          <div class="skill-icon" aria-label="C++">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++">
+            <span class="skill-tooltip">C++</span>
+          </div>
+          <div class="skill-icon" aria-label="C">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C">
+            <span class="skill-tooltip">C</span>
+          </div>
+          <div class="skill-icon" aria-label="JavaScript">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript">
+            <span class="skill-tooltip">JavaScript</span>
+          </div>
         </div>
       </div>
       <div class="skill-cell">
         <div class="skill-cell-label">// frameworks</div>
         <div class="skill-tags">
-          <span class="skill-tag">Django</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Streamlit</span>
-          <span class="skill-tag">HTML &amp; CSS</span>
+          <div class="skill-icon" aria-label="Django">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django">
+            <span class="skill-tooltip">Django</span>
+          </div>
+          <div class="skill-icon" aria-label="Node.js">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js">
+            <span class="skill-tooltip">Node.js</span>
+          </div>
+          <div class="skill-icon" aria-label="Streamlit">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg" alt="Streamlit">
+            <span class="skill-tooltip">Streamlit</span>
+          </div>
+          <div class="skill-icon" aria-label="HTML5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5">
+            <span class="skill-tooltip">HTML</span>
+          </div>
+          <div class="skill-icon" aria-label="CSS3">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3">
+            <span class="skill-tooltip">CSS</span>
+          </div>
         </div>
       </div>
       <div class="skill-cell">
         <div class="skill-cell-label">// tools &amp; platforms</div>
         <div class="skill-tags">
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">MongoDB</span>
-          <span class="skill-tag">PostgreSQL</span>
+          <div class="skill-icon" aria-label="MySQL">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL">
+            <span class="skill-tooltip">MySQL</span>
+          </div>
+          <div class="skill-icon" aria-label="MongoDB">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+            <span class="skill-tooltip">MongoDB</span>
+          </div>
+          <div class="skill-icon" aria-label="PostgreSQL">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+            <span class="skill-tooltip">PostgreSQL</span>
+          </div>
         </div>
       </div>
       <div class="skill-cell">
